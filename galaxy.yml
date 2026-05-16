@@ -1,0 +1,15 @@
+---
+namespace: stevefulme1
+name: mongodb
+version: 1.0.0
+readme: README.md
+authors:
+  - Steve Fulmer <sfulmer@redhat.com>
+description: >-
+  Ansible Collection for MongoDB — Atlas cluster/backup/networking/alerts, self-hosted replication/sharding/users, and EDA change stream integration
+license_file: LICENSE
+tags: [mongodb]
+repository: https://github.com/stevefulme1/ansible-mongodb
+documentation: https://github.com/stevefulme1/ansible-mongodb
+issues: https://github.com/stevefulme1/ansible-mongodb/issues
+build_ignore: [.git, .github, tests, '*.tar.gz']
