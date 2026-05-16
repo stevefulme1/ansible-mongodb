@@ -7,12 +7,12 @@
 """mongodb dynamic inventory plugin."""
 
 from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
 DOCUMENTATION = r"""
 ---
 name: mongodb_inventory
-plugin_type: inventory
 short_description: MongoDB replica set members and Atlas clusters
 description:
     - Dynamically discovers MongoDB replica set members and Atlas clusters.
@@ -59,6 +59,7 @@ from ansible.plugins.inventory import BaseInventoryPlugin
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
