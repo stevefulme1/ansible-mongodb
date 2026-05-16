@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_monitoring
+# Configure MongoDB monitoring and alerting
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_monitoring_host is defined
+    fail_msg: "mongodb_monitoring_host must be defined"
+    quiet: true
+
+- name: Execute mongodb monitoring
+  ansible.builtin.debug:
+    msg: >-
+      Configure MongoDB monitoring and alerting.
+      Target: {{ mongodb_monitoring_host }}

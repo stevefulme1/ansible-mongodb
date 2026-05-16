@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_index_optimization
+
+# Target host
+mongodb_index_optimization_host: ""
+
+# Authentication
+mongodb_index_optimization_username: ""
+mongodb_index_optimization_password: ""
+mongodb_index_optimization_api_key: ""
+
+# Behavior
+mongodb_index_optimization_validate_certs: true
+mongodb_index_optimization_state: present

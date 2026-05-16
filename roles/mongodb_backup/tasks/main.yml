@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_backup
+# Configure and execute scheduled MongoDB backups
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_backup_host is defined
+    fail_msg: "mongodb_backup_host must be defined"
+    quiet: true
+
+- name: Execute mongodb backup
+  ansible.builtin.debug:
+    msg: >-
+      Configure and execute scheduled MongoDB backups.
+      Target: {{ mongodb_backup_host }}

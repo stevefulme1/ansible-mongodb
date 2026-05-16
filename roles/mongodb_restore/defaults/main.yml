@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_restore
+
+# Target host
+mongodb_restore_host: ""
+
+# Authentication
+mongodb_restore_username: ""
+mongodb_restore_password: ""
+mongodb_restore_api_key: ""
+
+# Behavior
+mongodb_restore_validate_certs: true
+mongodb_restore_state: present

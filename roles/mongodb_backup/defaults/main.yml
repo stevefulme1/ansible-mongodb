@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_backup
+
+# Target host
+mongodb_backup_host: ""
+
+# Authentication
+mongodb_backup_username: ""
+mongodb_backup_password: ""
+mongodb_backup_api_key: ""
+
+# Behavior
+mongodb_backup_validate_certs: true
+mongodb_backup_state: present

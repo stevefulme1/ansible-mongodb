@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_security_hardening
+
+# Target host
+mongodb_security_hardening_host: ""
+
+# Authentication
+mongodb_security_hardening_username: ""
+mongodb_security_hardening_password: ""
+mongodb_security_hardening_api_key: ""
+
+# Behavior
+mongodb_security_hardening_validate_certs: true
+mongodb_security_hardening_state: present

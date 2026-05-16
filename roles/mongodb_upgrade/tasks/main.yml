@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_upgrade
+# Rolling upgrade of MongoDB cluster
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_upgrade_host is defined
+    fail_msg: "mongodb_upgrade_host must be defined"
+    quiet: true
+
+- name: Execute mongodb upgrade
+  ansible.builtin.debug:
+    msg: >-
+      Rolling upgrade of MongoDB cluster.
+      Target: {{ mongodb_upgrade_host }}

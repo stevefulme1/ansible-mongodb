@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_user_management
+# Bulk user and role management
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_user_management_host is defined
+    fail_msg: "mongodb_user_management_host must be defined"
+    quiet: true
+
+- name: Execute mongodb user management
+  ansible.builtin.debug:
+    msg: >-
+      Bulk user and role management.
+      Target: {{ mongodb_user_management_host }}

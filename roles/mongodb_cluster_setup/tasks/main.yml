@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_cluster_setup
+# Deploy and configure a MongoDB replica set from scratch
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_cluster_setup_host is defined
+    fail_msg: "mongodb_cluster_setup_host must be defined"
+    quiet: true
+
+- name: Execute mongodb cluster setup
+  ansible.builtin.debug:
+    msg: >-
+      Deploy and configure a MongoDB replica set from scratch.
+      Target: {{ mongodb_cluster_setup_host }}

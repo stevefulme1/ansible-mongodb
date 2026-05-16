@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_upgrade
+
+# Target host
+mongodb_upgrade_host: ""
+
+# Authentication
+mongodb_upgrade_username: ""
+mongodb_upgrade_password: ""
+mongodb_upgrade_api_key: ""
+
+# Behavior
+mongodb_upgrade_validate_certs: true
+mongodb_upgrade_state: present

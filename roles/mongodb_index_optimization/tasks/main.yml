@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_index_optimization
+# Analyze and optimize indexes
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_index_optimization_host is defined
+    fail_msg: "mongodb_index_optimization_host must be defined"
+    quiet: true
+
+- name: Execute mongodb index optimization
+  ansible.builtin.debug:
+    msg: >-
+      Analyze and optimize indexes.
+      Target: {{ mongodb_index_optimization_host }}

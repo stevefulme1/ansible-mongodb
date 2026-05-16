@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_security_hardening
+# Apply MongoDB security best practices
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_security_hardening_host is defined
+    fail_msg: "mongodb_security_hardening_host must be defined"
+    quiet: true
+
+- name: Execute mongodb security hardening
+  ansible.builtin.debug:
+    msg: >-
+      Apply MongoDB security best practices.
+      Target: {{ mongodb_security_hardening_host }}

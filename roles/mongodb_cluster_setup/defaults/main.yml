@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_cluster_setup
+
+# Target host
+mongodb_cluster_setup_host: ""
+
+# Authentication
+mongodb_cluster_setup_username: ""
+mongodb_cluster_setup_password: ""
+mongodb_cluster_setup_api_key: ""
+
+# Behavior
+mongodb_cluster_setup_validate_certs: true
+mongodb_cluster_setup_state: present

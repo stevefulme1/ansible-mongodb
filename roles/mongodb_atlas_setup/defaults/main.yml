@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_atlas_setup
+
+# Target host
+mongodb_atlas_setup_host: ""
+
+# Authentication
+mongodb_atlas_setup_username: ""
+mongodb_atlas_setup_password: ""
+mongodb_atlas_setup_api_key: ""
+
+# Behavior
+mongodb_atlas_setup_validate_certs: true
+mongodb_atlas_setup_state: present

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_sharding_setup
+
+# Target host
+mongodb_sharding_setup_host: ""
+
+# Authentication
+mongodb_sharding_setup_username: ""
+mongodb_sharding_setup_password: ""
+mongodb_sharding_setup_api_key: ""
+
+# Behavior
+mongodb_sharding_setup_validate_certs: true
+mongodb_sharding_setup_state: present

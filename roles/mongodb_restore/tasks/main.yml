@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_restore
+# Restore MongoDB from backup snapshots
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_restore_host is defined
+    fail_msg: "mongodb_restore_host must be defined"
+    quiet: true
+
+- name: Execute mongodb restore
+  ansible.builtin.debug:
+    msg: >-
+      Restore MongoDB from backup snapshots.
+      Target: {{ mongodb_restore_host }}

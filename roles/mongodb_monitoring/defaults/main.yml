@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_monitoring
+
+# Target host
+mongodb_monitoring_host: ""
+
+# Authentication
+mongodb_monitoring_username: ""
+mongodb_monitoring_password: ""
+mongodb_monitoring_api_key: ""
+
+# Behavior
+mongodb_monitoring_validate_certs: true
+mongodb_monitoring_state: present

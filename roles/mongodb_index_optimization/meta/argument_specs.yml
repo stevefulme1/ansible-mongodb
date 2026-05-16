@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    short_description: "Analyze and optimize indexes"
+    options:
+      mongodb_index_optimization_host:
+        description: Target host address
+        type: str
+        required: true
+      mongodb_index_optimization_username:
+        description: Authentication username
+        type: str
+      mongodb_index_optimization_password:
+        description: Authentication password
+        type: str
+      mongodb_index_optimization_api_key:
+        description: API key for authentication
+        type: str
+      mongodb_index_optimization_validate_certs:
+        description: Validate SSL certificates
+        type: bool
+        default: true
+      mongodb_index_optimization_state:
+        description: Desired state
+        type: str
+        default: present
+        choices: [present, absent]

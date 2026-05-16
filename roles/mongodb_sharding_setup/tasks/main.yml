@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_sharding_setup
+# Configure and deploy sharded cluster
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_sharding_setup_host is defined
+    fail_msg: "mongodb_sharding_setup_host must be defined"
+    quiet: true
+
+- name: Execute mongodb sharding setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure and deploy sharded cluster.
+      Target: {{ mongodb_sharding_setup_host }}

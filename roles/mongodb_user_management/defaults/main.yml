@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for mongodb_user_management
+
+# Target host
+mongodb_user_management_host: ""
+
+# Authentication
+mongodb_user_management_username: ""
+mongodb_user_management_password: ""
+mongodb_user_management_api_key: ""
+
+# Behavior
+mongodb_user_management_validate_certs: true
+mongodb_user_management_state: present

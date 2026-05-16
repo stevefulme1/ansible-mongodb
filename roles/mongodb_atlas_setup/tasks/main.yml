@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for mongodb_atlas_setup
+# Provision MongoDB Atlas cluster with networking
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - mongodb_atlas_setup_host is defined
+    fail_msg: "mongodb_atlas_setup_host must be defined"
+    quiet: true
+
+- name: Execute mongodb atlas setup
+  ansible.builtin.debug:
+    msg: >-
+      Provision MongoDB Atlas cluster with networking.
+      Target: {{ mongodb_atlas_setup_host }}

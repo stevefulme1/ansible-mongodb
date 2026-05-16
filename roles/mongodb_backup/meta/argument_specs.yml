@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    short_description: "Configure and execute scheduled MongoDB backups"
+    options:
+      mongodb_backup_host:
+        description: Target host address
+        type: str
+        required: true
+      mongodb_backup_username:
+        description: Authentication username
+        type: str
+      mongodb_backup_password:
+        description: Authentication password
+        type: str
+      mongodb_backup_api_key:
+        description: API key for authentication
+        type: str
+      mongodb_backup_validate_certs:
+        description: Validate SSL certificates
+        type: bool
+        default: true
+      mongodb_backup_state:
+        description: Desired state
+        type: str
+        default: present
+        choices: [present, absent]
