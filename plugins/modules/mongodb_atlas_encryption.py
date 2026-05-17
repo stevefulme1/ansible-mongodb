@@ -108,7 +108,8 @@ def main():
         if resource_id:
             existing = client.get("atlas_encryption", resource_id)
         elif module.params.get("name"):
-            candidates = client.list("atlas_encryption", {dict(name=module.params.get("name", ""))})
+            name_filter = module.params.get("name", "")
+            candidates = client.list("atlas_encryption", {"name": name_filter})
             if candidates:
                 existing = candidates[0]
 

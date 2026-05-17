@@ -108,7 +108,8 @@ def main():
         if resource_id:
             existing = client.get("auto_scaling", resource_id)
         elif module.params.get("name"):
-            candidates = client.list("auto_scaling", {dict(name=module.params.get("name", ""))})
+            name_filter = module.params.get("name", "")
+            candidates = client.list("auto_scaling", {"name": name_filter})
             if candidates:
                 existing = candidates[0]
 

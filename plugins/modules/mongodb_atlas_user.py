@@ -99,7 +99,8 @@ def main():
         if rid:
             existing = client.get("atlas_user", rid)
         elif module.params.get("name"):
-            candidates = client.list("atlas_user", {dict(name=module.params.get("name", ""))})
+            name_filter = module.params.get("name", "")
+            candidates = client.list("atlas_user", {"name": name_filter})
             if candidates:
                 existing = candidates[0]
 

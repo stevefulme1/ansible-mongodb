@@ -108,7 +108,8 @@ def main():
         if resource_id:
             existing = client.get("topology", resource_id)
         elif module.params.get("name"):
-            candidates = client.list("topology", {dict(name=module.params.get("name", ""))})
+            name_filter = module.params.get("name", "")
+            candidates = client.list("topology", {"name": name_filter})
             if candidates:
                 existing = candidates[0]
 
