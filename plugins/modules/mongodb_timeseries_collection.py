@@ -108,7 +108,7 @@ def main():
         if resource_id:
             existing = client.get("timeseries_collection", resource_id)
         elif module.params.get("name"):
-            candidates = client.list("timeseries_collection", {{"name": module.params["name"]}})
+            candidates = client.list("timeseries_collection", {dict(name=module.params.get("name", ""))})
             if candidates:
                 existing = candidates[0]
 

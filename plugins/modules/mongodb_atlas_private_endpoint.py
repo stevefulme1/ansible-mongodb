@@ -108,7 +108,7 @@ def main():
         if resource_id:
             existing = client.get("atlas_endpoint", resource_id)
         elif module.params.get("name"):
-            candidates = client.list("atlas_endpoint", {{"name": module.params["name"]}})
+            candidates = client.list("atlas_endpoint", {dict(name=module.params.get("name", ""))})
             if candidates:
                 existing = candidates[0]
 
