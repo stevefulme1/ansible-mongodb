@@ -17,7 +17,8 @@ class TestDocumentation:
         assert len(mongodb_atlas_network_peering.DOCUMENTATION) > 0
 
     def test_documentation_has_module_name(self):
-        assert "mongodb_atlas_network_peering" in mongodb_atlas_network_peering.DOCUMENTATION or "network_peering" in mongodb_atlas_network_peering.DOCUMENTATION
+        assert "mongodb_atlas_network_peering" in mongodb_atlas_network_peering.DOCUMENTATION or \
+            "network_peering" in mongodb_atlas_network_peering.DOCUMENTATION
 
     def test_documentation_has_short_description(self):
         assert "short_description" in mongodb_atlas_network_peering.DOCUMENTATION

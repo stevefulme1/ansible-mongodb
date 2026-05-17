@@ -17,7 +17,8 @@ class TestDocumentation:
         assert len(mongodb_atlas_private_endpoint.DOCUMENTATION) > 0
 
     def test_documentation_has_module_name(self):
-        assert "mongodb_atlas_private_endpoint" in mongodb_atlas_private_endpoint.DOCUMENTATION or "private_endpoint" in mongodb_atlas_private_endpoint.DOCUMENTATION
+        assert "mongodb_atlas_private_endpoint" in mongodb_atlas_private_endpoint.DOCUMENTATION or \
+            "private_endpoint" in mongodb_atlas_private_endpoint.DOCUMENTATION
 
     def test_documentation_has_short_description(self):
         assert "short_description" in mongodb_atlas_private_endpoint.DOCUMENTATION
