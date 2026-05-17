@@ -104,14 +104,30 @@ def main():
     resource_id = module.params.get("restore_id")
 
     if state == "present":
+        existing = None
         if resource_id:
-            result = client.update("atlas_restore", resource_id, module.params)
+            existing = client.get("atlas_restore", resource_id)
+        elif module.params.get("name"):
+            candidates = client.list("atlas_restore", {{"name": module.params["name"]}})
+            if candidates:
+                existing = candidates[0]
+
+        if existing:
+            if module.check_mode:
+                module.exit_json(changed=False, atlas_restore=existing)
+            result = client.update("atlas_restore", resource_id or existing.get("id", ""), module.params)
+            module.exit_json(changed=True, atlas_restore=result)
         else:
             if module.check_mode:
                 module.exit_json(changed=True)
             result = client.create("atlas_restore", module.params)
-        module.exit_json(changed=True, atlas_restore=result)
+            module.exit_json(changed=True, atlas_restore=result)
     else:
+        existing = None
+        if resource_id:
+            existing = client.get("atlas_restore", resource_id)
+        if not existing:
+            module.exit_json(changed=False)
         if module.check_mode:
             module.exit_json(changed=True)
         client.delete("atlas_restore", resource_id)

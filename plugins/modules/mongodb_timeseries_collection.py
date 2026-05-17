@@ -104,14 +104,30 @@ def main():
     resource_id = module.params.get("collection_id")
 
     if state == "present":
+        existing = None
         if resource_id:
-            result = client.update("timeseries_collection", resource_id, module.params)
+            existing = client.get("timeseries_collection", resource_id)
+        elif module.params.get("name"):
+            candidates = client.list("timeseries_collection", {{"name": module.params["name"]}})
+            if candidates:
+                existing = candidates[0]
+
+        if existing:
+            if module.check_mode:
+                module.exit_json(changed=False, timeseries_collection=existing)
+            result = client.update("timeseries_collection", resource_id or existing.get("id", ""), module.params)
+            module.exit_json(changed=True, timeseries_collection=result)
         else:
             if module.check_mode:
                 module.exit_json(changed=True)
             result = client.create("timeseries_collection", module.params)
-        module.exit_json(changed=True, timeseries_collection=result)
+            module.exit_json(changed=True, timeseries_collection=result)
     else:
+        existing = None
+        if resource_id:
+            existing = client.get("timeseries_collection", resource_id)
+        if not existing:
+            module.exit_json(changed=False)
         if module.check_mode:
             module.exit_json(changed=True)
         client.delete("timeseries_collection", resource_id)

@@ -95,14 +95,30 @@ def main():
     state = module.params["state"]
     rid = module.params.get("db_username")
     if state == "present":
+        existing = None
         if rid:
-            result = client.update("atlas_user", rid, module.params)
+            existing = client.get("atlas_user", rid)
+        elif module.params.get("name"):
+            candidates = client.list("atlas_user", {{"name": module.params["name"]}})
+            if candidates:
+                existing = candidates[0]
+
+        if existing:
+            if module.check_mode:
+                module.exit_json(changed=False, atlas_user=existing)
+            result = client.update("atlas_user", rid or existing.get("id", ""), module.params)
+            module.exit_json(changed=True, atlas_user=result)
         else:
             if module.check_mode:
                 module.exit_json(changed=True)
             result = client.create("atlas_user", module.params)
-        module.exit_json(changed=True, atlas_user=result)
+            module.exit_json(changed=True, atlas_user=result)
     else:
+        existing = None
+        if rid:
+            existing = client.get("atlas_user", rid)
+        if not existing:
+            module.exit_json(changed=False)
         if module.check_mode:
             module.exit_json(changed=True)
         client.delete("atlas_user", rid)
