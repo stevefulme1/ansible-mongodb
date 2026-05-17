@@ -51,4 +51,3 @@ plugins/modules/mongodb_timeseries_collection.py
 plugins/modules/mongodb_topology_info.py
 plugins/modules/mongodb_topology.py
 plugins/modules/mongodb_user_info.py
-plugins/modules/mongodb_user.py pylint:unhashable-member
