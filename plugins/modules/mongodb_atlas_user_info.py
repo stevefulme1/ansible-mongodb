@@ -41,21 +41,21 @@ options:
         description: Validate SSL certificates.
         type: bool
         default: true
-  limit:
-    description:
-      - Maximum number of results per page (maps to Atlas itemsPerPage).
-    type: int
-    default: 100
-  offset:
-    description:
-      - Page number to return (maps to Atlas pageNum, 1-indexed).
-    type: int
-    default: 1
-  max_results:
-    description:
-      - Maximum total results to return.
-    type: int
-    default: 1000
+    limit:
+        description:
+          - Maximum number of results per page (maps to Atlas itemsPerPage).
+        type: int
+        default: 100
+    offset:
+        description:
+          - Page number to return (maps to Atlas pageNum, 1-indexed).
+        type: int
+        default: 1
+    max_results:
+        description:
+          - Maximum total results to return.
+        type: int
+        default: 1000
 """
 
 EXAMPLES = r"""
