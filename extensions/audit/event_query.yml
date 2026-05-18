@@ -1,0 +1,79 @@
+---
+# extensions/audit/event_query.yml
+# Maps module return values to the AAP Normalized Resource Taxonomy
+# for indirect node counting.
+#
+# MongoDB modules return API response dicts via the ApiClient.  The dict
+# keys vary per resource type (atlas_cluster, replicaset, etc.).
+
+stevefulme1.mongodb.mongodb_atlas_cluster:
+  query: >-
+    {
+      name: .atlas_cluster.name,
+      canonical_facts: {
+        uuid: .atlas_cluster.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
+
+stevefulme1.mongodb.mongodb_replicaset:
+  query: >-
+    {
+      name: .replicaset.name,
+      canonical_facts: {
+        uuid: .replicaset.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
+
+stevefulme1.mongodb.mongodb_serverless_instance:
+  query: >-
+    {
+      name: .serverless_instance.name,
+      canonical_facts: {
+        uuid: .serverless_instance.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
+
+stevefulme1.mongodb.mongodb_database:
+  query: >-
+    {
+      name: .database.name,
+      canonical_facts: {
+        uuid: .database.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
+
+stevefulme1.mongodb.mongodb_user:
+  query: >-
+    {
+      name: .user.name,
+      canonical_facts: {
+        uuid: .user.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
+
+stevefulme1.mongodb.mongodb_shard:
+  query: >-
+    {
+      name: .shard.name,
+      canonical_facts: {
+        uuid: .shard.id
+      },
+      facts: {
+        device_type: "database_nosql"
+      }
+    }
