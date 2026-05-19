@@ -13,9 +13,11 @@ argument_specs:
       mongodb_backup_password:
         description: Authentication password
         type: str
+        no_log: true
       mongodb_backup_api_key:
         description: API key for authentication
         type: str
+        no_log: true
       mongodb_backup_validate_certs:
         description: Validate SSL certificates
         type: bool
