@@ -1,10 +1,17 @@
 # stevefulme1.mongodb
 
-Ansible Collection for MongoDB -- Atlas cluster/backup/networking/alerts, self-hosted replication/sharding/users, and EDA change stream integration.
+Ansible Collection for MongoDB -- Atlas cloud management and self-hosted database automation.
+
+**Status: Pre-release (0.1.0). Under active development.**
 
 ## Overview
 
-This collection provides **55 modules** for automating MongoDB infrastructure (both Atlas and self-hosted), along with 10 operational roles, a dynamic inventory plugin, and CI/CD workflows.
+This collection will provide modules for automating MongoDB infrastructure using real MongoDB drivers and APIs:
+
+- **Atlas** (cloud) -- via MongoDB Atlas Administration API
+- **Self-hosted** -- via `pymongo` Python driver
+
+Placeholder roles are included for common operational workflows.
 
 ## Requirements
 
@@ -21,21 +28,17 @@ Or from source:
 
 ```bash
 ansible-galaxy collection build
-ansible-galaxy collection install stevefulme1-mongodb-2.0.0.tar.gz
+ansible-galaxy collection install stevefulme1-mongodb-0.1.0.tar.gz
 ```
 
 ## Included Content
 
-### Modules (55)
+### Modules
 
-CRUD and info modules covering:
+No modules yet. Modules will use:
 
-- **Atlas** -- clusters, backups, networking, alerts, users, teams
-- **Self-hosted** -- replication, sharding, users, roles, indexes
-- **Time-series** -- time-series collection management
-- **Serverless** -- serverless instance management
-- **Auto-scaling** -- auto-scaling configuration
-- **Monitoring** -- profiling, metrics, diagnostics
+- `pymongo` for self-hosted MongoDB operations
+- MongoDB Atlas Administration API v2 for cloud resources
 
 ### Roles (10)
 
@@ -52,34 +55,12 @@ CRUD and info modules covering:
 | `mongodb_upgrade` | Version upgrade procedures |
 | `mongodb_user_management` | User and role management |
 
-### Inventory Plugin
-
-- `mongodb_inventory` -- Dynamic inventory from MongoDB clusters
-
-## Usage
-
-```yaml
-- name: Create an Atlas cluster
-  stevefulme1.mongodb.mongodb_atlas_cluster:
-    api_public_key: "{{ atlas_public_key }}"
-    api_private_key: "{{ atlas_private_key }}"
-    project_id: "{{ atlas_project_id }}"
-    name: production
-    cluster_type: REPLICASET
-    provider_name: AWS
-    region: US_EAST_1
-    instance_size: M30
-    state: present
-```
-
 ## License
 
-Apache-2.0
+GPL-3.0-or-later
 
 ## Community
 
 - [Contributing](CONTRIBUTING.md) - How to contribute to this project
 - [Code of Conduct](CODE_OF_CONDUCT.md) - Ansible Community Code of Conduct
 - [Security Policy](SECURITY.md) - How to report security vulnerabilities
-- [License](COPYING) - GPL-3.0
-

@@ -9,7 +9,7 @@ description: >-
   Ansible Collection for MongoDB — Atlas cluster/backup/networking/alerts, self-hosted replication/sharding/users, and EDA change stream integration
   Status: Pre-release. Under active development.
 license_file: LICENSE
-tags: [mongodb]
+tags: [database, mongodb]
 repository: https://github.com/stevefulme1/ansible-mongodb
 documentation: https://github.com/stevefulme1/ansible-mongodb
 issues: https://github.com/stevefulme1/ansible-mongodb/issues
