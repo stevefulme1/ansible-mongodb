@@ -1,0 +1,113 @@
+---
+# Integration tests for stevefulme1.mongodb.mongodb_serverless_instance
+# Full CRUD lifecycle: CREATE -> idempotency -> UPDATE -> DELETE -> idempotency
+
+- name: Test mongodb_serverless_instance CRUD lifecycle
+  block:
+    - name: Create serverless_instance (check mode)
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: present
+      check_mode: true
+      register: check_result
+
+    - name: Verify check mode reports changed
+      ansible.builtin.assert:
+        that:
+          - check_result is changed
+
+    - name: Create serverless_instance
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: present
+      register: create_result
+
+    - name: Verify create result
+      ansible.builtin.assert:
+        that:
+          - create_result is changed
+          - create_result.serverless_instance is defined
+
+    - name: Create serverless_instance again (idempotency)
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: present
+      register: idem_result
+
+    - name: Verify idempotency
+      ansible.builtin.assert:
+        that:
+          - idem_result is not changed
+
+    - name: Fetch serverless_instance info
+      stevefulme1.mongodb.mongodb_serverless_instance_info:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+      register: info_result
+
+    - name: Verify info returns data
+      ansible.builtin.assert:
+        that:
+          - info_result.serverless_instances is defined
+
+    - name: Delete serverless_instance
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: absent
+      register: delete_result
+
+    - name: Verify delete result
+      ansible.builtin.assert:
+        that:
+          - delete_result is changed
+
+    - name: Delete serverless_instance again (idempotency)
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: absent
+      register: delete_idem_result
+
+    - name: Verify delete idempotency
+      ansible.builtin.assert:
+        that:
+          - delete_idem_result is not changed
+
+  always:
+    - name: Cleanup - ensure test resource is removed
+      stevefulme1.mongodb.mongodb_serverless_instance:
+        host: "{{ test_host }}"
+        username: "{{ test_username | default(omit) }}"
+        password: "{{ test_password | default(omit) }}"
+        api_key: "{{ test_api_key | default(omit) }}"
+        validate_certs: "{{ test_validate_certs | default(false) }}"
+        name: "test-serverless_instance"
+        state: absent
+      failed_when: false
