@@ -4,9 +4,9 @@
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
-import pytest
-
-from ansible_collections.stevefulme1.mongodb.plugins.modules import mongodb_timeseries_collection
+from ansible_collections.stevefulme1.mongodb.plugins.modules import (
+    mongodb_timeseries_collection,
+)
 
 
 class TestDocumentation:
@@ -17,10 +17,17 @@ class TestDocumentation:
         assert len(mongodb_timeseries_collection.DOCUMENTATION) > 0
 
     def test_documentation_has_module_name(self):
-        assert "mongodb_timeseries_collection" in mongodb_timeseries_collection.DOCUMENTATION or "timeseries_collection" in mongodb_timeseries_collection.DOCUMENTATION
+        assert (
+            "mongodb_timeseries_collection"
+            in mongodb_timeseries_collection.DOCUMENTATION
+            or "timeseries_collection"
+            in mongodb_timeseries_collection.DOCUMENTATION
+        )
 
     def test_documentation_has_short_description(self):
-        assert "short_description" in mongodb_timeseries_collection.DOCUMENTATION
+        assert (
+            "short_description" in mongodb_timeseries_collection.DOCUMENTATION
+        )
 
     def test_documentation_has_options(self):
         assert "options" in mongodb_timeseries_collection.DOCUMENTATION

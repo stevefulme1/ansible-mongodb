@@ -90,11 +90,7 @@ def get_mongodb_client(module):
         module.fail_json(
             msg="Unable to connect to MongoDB: %s" % str(exc)
         )
-    except OperationFailure as exc:
-        module.fail_json(
-            msg="Authentication failed for MongoDB: %s" % str(exc)
-        )
-    except PyMongoError as exc:
+    except (OperationFailure, PyMongoError) as exc:
         module.fail_json(
             msg="MongoDB error: %s" % str(exc)
         )

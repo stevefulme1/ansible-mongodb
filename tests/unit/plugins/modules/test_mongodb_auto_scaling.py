@@ -4,9 +4,9 @@
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
-import pytest
-
-from ansible_collections.stevefulme1.mongodb.plugins.modules import mongodb_auto_scaling
+from ansible_collections.stevefulme1.mongodb.plugins.modules import (
+    mongodb_auto_scaling,
+)
 
 
 class TestDocumentation:
@@ -17,7 +17,10 @@ class TestDocumentation:
         assert len(mongodb_auto_scaling.DOCUMENTATION) > 0
 
     def test_documentation_has_module_name(self):
-        assert "mongodb_auto_scaling" in mongodb_auto_scaling.DOCUMENTATION or "auto_scaling" in mongodb_auto_scaling.DOCUMENTATION
+        assert (
+            "mongodb_auto_scaling" in mongodb_auto_scaling.DOCUMENTATION
+            or "auto_scaling" in mongodb_auto_scaling.DOCUMENTATION
+        )
 
     def test_documentation_has_short_description(self):
         assert "short_description" in mongodb_auto_scaling.DOCUMENTATION
