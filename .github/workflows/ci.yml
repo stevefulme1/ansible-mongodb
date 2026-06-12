@@ -67,6 +67,12 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: pip install pytest requests ansible-core
+      - name: Install collection test requirements
+        run: |
+          if [ -f tests/unit/requirements.txt ]; then
+            pip install -r tests/unit/requirements.txt
+          fi
+        working-directory: ansible_collections/stevefulme1/mongodb
       - name: Unit tests
         working-directory: ansible_collections/stevefulme1/mongodb
         env:
