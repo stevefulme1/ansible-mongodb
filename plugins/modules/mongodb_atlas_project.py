@@ -67,9 +67,9 @@ project:
   returned: when state is present
 """
 
-from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.basic import AnsibleModule  # noqa: E402
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (  # noqa: E402
     AtlasClient,
     atlas_common_argument_spec,
 )

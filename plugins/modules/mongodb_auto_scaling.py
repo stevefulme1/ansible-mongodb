@@ -160,7 +160,7 @@ def main():
         else:
             # Check if update needed
             current = auto_scaling.get("autoScaling", {})
-            if (current.get("compute", {}).get("enabled") != module.params["compute_enabled"] or
+            if (current.get("compute", {}).get("enabled") != module.params["compute_enabled"] or  # noqa: W504
                     current.get("diskGBEnabled") != module.params["disk_gb_enabled"]):
                 if not module.check_mode:
                     status, auto_scaling = client.patch(path, payload)

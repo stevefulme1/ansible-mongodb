@@ -1,0 +1,6 @@
+---
+# Test defaults - override these in your integration_config.yml
+test_host: "localhost:27017"
+test_username: "admin"
+test_password: "password"
+test_validate_certs: false

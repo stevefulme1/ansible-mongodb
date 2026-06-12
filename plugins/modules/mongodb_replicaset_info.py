@@ -39,9 +39,9 @@ replicaset:
       type: list
 """
 
-from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.basic import AnsibleModule  # noqa: E402
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.mongodb_client import (
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.mongodb_client import (  # noqa: E402
     get_mongodb_client,
     mongodb_common_argument_spec,
 )
