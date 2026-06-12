@@ -81,6 +81,7 @@ jobs:
 
   integration:
     name: Integration Tests
+    if: ${{ vars.MONGODB_ATLAS_PUBLIC_KEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
