@@ -99,8 +99,6 @@ timeseries_collection:
 """
 
 
-
-
 def main():
     argument_spec = mongodb_common_argument_spec()
     argument_spec.update(

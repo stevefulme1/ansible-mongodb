@@ -99,8 +99,6 @@ auto_scaling:
 """
 
 
-
-
 def main():
     argument_spec = atlas_common_argument_spec()
     argument_spec.update(
