@@ -22,7 +22,7 @@ version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
 extends_documentation_fragment:
-  - stevefulme1.mongodb.connection
+  - stevefulme1.mongodb.mongodb
 options:
   database:
     description:
