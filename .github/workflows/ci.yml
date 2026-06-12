@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
       - run: pip install ansible-core ansible-lint flake8
       - name: Ansible Lint
-        run: ansible-lint --profile production || true
+        run: ansible-lint --profile production
       - name: Flake8
         run: flake8 plugins/ --max-line-length=120 --ignore=E402,W503 --exclude=__init__.py
 
@@ -77,7 +77,7 @@ jobs:
         working-directory: ansible_collections/stevefulme1/mongodb
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: pytest tests/unit/ -v --tb=short || true
+        run: pytest tests/unit/ -v --tb=short
 
   integration:
     name: Integration Tests
@@ -94,7 +94,7 @@ jobs:
         working-directory: ansible_collections/stevefulme1/mongodb
         run: |
           if [ -d tests/integration/targets ]; then
-            ansible-test integration -v --color yes --python 3.12 || true
+            ansible-test integration -v --color yes --python 3.12
           else
             echo "No integration test targets found, skipping"
           fi
