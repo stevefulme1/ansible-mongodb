@@ -21,7 +21,8 @@ class TestDocumentation:
         assert len(mongodb_timeseries_collection.DOCUMENTATION) > 0
 
     def test_documentation_has_module_name(self):
-        assert "mongodb_timeseries_collection" in mongodb_timeseries_collection.DOCUMENTATION or "timeseries_collection" in mongodb_timeseries_collection.DOCUMENTATION
+        doc = mongodb_timeseries_collection.DOCUMENTATION
+        assert "mongodb_timeseries_collection" in doc or "timeseries_collection" in doc
 
     def test_documentation_has_short_description(self):
         assert "short_description" in mongodb_timeseries_collection.DOCUMENTATION

@@ -1,16 +1,13 @@
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
-from __future__ import absolute_import, division, print_function
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
     AtlasClient,
     atlas_common_argument_spec,
 )
-from ansible.module_utils.basic import AnsibleModule
-
-__metaclass__ = type
-
 DOCUMENTATION = r"""
 ---
 module: mongodb_serverless_instance
@@ -85,6 +82,9 @@ serverless_instance:
   type: dict
   returned: when state is present
 """
+
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
+from ansible.module_utils.basic import AnsibleModule
 
 
 def main():
