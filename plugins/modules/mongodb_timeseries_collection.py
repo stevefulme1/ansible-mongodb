@@ -95,8 +95,8 @@ timeseries_collection:
 
 from ansible.module_utils.basic import AnsibleModule
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.connection import (
-    MongoDBClient,
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.mongodb_client import (
+    get_mongodb_client,
     mongodb_common_argument_spec,
 )
 
@@ -125,7 +125,7 @@ def main():
     database = module.params["database"]
     name = module.params["name"]
     state = module.params["state"]
-    client = MongoDBClient(module)
+    client = get_mongodb_client(module)
 
     changed = False
     timeseries_collection = {}
