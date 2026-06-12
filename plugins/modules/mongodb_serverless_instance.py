@@ -3,6 +3,11 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
+    AtlasClient,
+    atlas_common_argument_spec,
+)
+from ansible.module_utils.basic import AnsibleModule
 
 __metaclass__ = type
 
@@ -81,12 +86,7 @@ serverless_instance:
   returned: when state is present
 """
 
-from ansible.module_utils.basic import AnsibleModule
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
-    AtlasClient,
-    atlas_common_argument_spec,
-)
 
 
 def main():
@@ -101,7 +101,8 @@ def main():
         ),
         region_name=dict(type="str", default="US_EAST_1"),
         continuous_backup_enabled=dict(type="bool", default=False),
-        state=dict(type="str", choices=["present", "absent"], default="present"),
+        state=dict(type="str", choices=[
+                   "present", "absent"], default="present"),
     )
 
     module = AnsibleModule(
@@ -146,7 +147,8 @@ def main():
             changed = True
         else:
             # Check if update needed
-            current_backup = serverless_instance.get("continuousBackupEnabled", False)
+            current_backup = serverless_instance.get(
+                "continuousBackupEnabled", False)
             if current_backup != module.params["continuous_backup_enabled"]:
                 if not module.check_mode:
                     status, serverless_instance = client.patch(path, payload)

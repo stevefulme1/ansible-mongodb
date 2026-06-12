@@ -3,6 +3,11 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.mongodb_client import (
+    get_mongodb_client,
+    mongodb_common_argument_spec,
+)
+from ansible.module_utils.basic import AnsibleModule
 
 __metaclass__ = type
 
@@ -93,12 +98,7 @@ timeseries_collection:
   returned: when state is present
 """
 
-from ansible.module_utils.basic import AnsibleModule
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.mongodb_client import (
-    get_mongodb_client,
-    mongodb_common_argument_spec,
-)
 
 
 def main():
@@ -114,7 +114,8 @@ def main():
             default="seconds",
         ),
         expire_after_seconds=dict(type="int"),
-        state=dict(type="str", choices=["present", "absent"], default="present"),
+        state=dict(type="str", choices=[
+                   "present", "absent"], default="present"),
     )
 
     module = AnsibleModule(
@@ -172,7 +173,8 @@ def main():
             changed = True
 
     client.close()
-    module.exit_json(changed=changed, timeseries_collection=timeseries_collection)
+    module.exit_json(
+        changed=changed, timeseries_collection=timeseries_collection)
 
 
 if __name__ == "__main__":

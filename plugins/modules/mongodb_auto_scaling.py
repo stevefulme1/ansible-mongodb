@@ -1,8 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+# GNU General Public License v3.0+ (see COPYING or
+#  https://www.gnu.org/licenses/gpl-3.0.txt)
+"""Manage MongoDB Atlas cluster auto-scaling settings."""
 
 from __future__ import absolute_import, division, print_function
+from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
+    AtlasClient,
+    atlas_common_argument_spec,
+)
+from ansible.module_utils.basic import AnsibleModule
 
 __metaclass__ = type
 
@@ -12,7 +19,8 @@ module: mongodb_auto_scaling
 short_description: Manage MongoDB Atlas cluster auto-scaling settings
 description:
   - Configure auto-scaling settings for MongoDB Atlas clusters.
-  - Uses the C(/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs) endpoint.
+  - Uses the C(/api/atlas/v2/groups/{groupId}/clusters/
+    {clusterName}/processArgs) endpoint.
 version_added: "0.2.0"
 author:
   - Steve Fulmer (@stevefulme1)
@@ -90,12 +98,7 @@ auto_scaling:
   returned: when state is present
 """
 
-from ansible.module_utils.basic import AnsibleModule
 
-from ansible_collections.stevefulme1.mongodb.plugins.module_utils.atlas_client import (
-    AtlasClient,
-    atlas_common_argument_spec,
-)
 
 
 def main():
@@ -108,7 +111,8 @@ def main():
         compute_min_instance_size=dict(type="str"),
         compute_max_instance_size=dict(type="str"),
         disk_gb_enabled=dict(type="bool", default=False),
-        state=dict(type="str", choices=["present", "absent"], default="present"),
+        state=dict(type="str", choices=[
+                   "present", "absent"], default="present"),
     )
 
     module = AnsibleModule(
@@ -159,7 +163,7 @@ def main():
             # Check if update needed
             current = auto_scaling.get("autoScaling", {})
             if (current.get("compute", {}).get("enabled") != module.params["compute_enabled"] or
-                current.get("diskGBEnabled") != module.params["disk_gb_enabled"]):
+                    current.get("diskGBEnabled") != module.params["disk_gb_enabled"]):
                 if not module.check_mode:
                     status, auto_scaling = client.patch(path, payload)
                 changed = True
