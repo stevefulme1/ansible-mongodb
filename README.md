@@ -2,7 +2,7 @@
 
 Ansible Collection for MongoDB -- Atlas cloud management and self-hosted database automation.
 
-**Status: Pre-release (0.2.0). Under active development.**
+**Status: Pre-release (0.1.0). Under active development.**
 
 ## Overview
 
@@ -29,7 +29,7 @@ Or from source:
 
 ```bash
 ansible-galaxy collection build
-ansible-galaxy collection install stevefulme1-mongodb-0.2.0.tar.gz
+ansible-galaxy collection install stevefulme1-mongodb-0.1.0.tar.gz
 ```
 
 ## Included Content
